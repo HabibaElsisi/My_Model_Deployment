@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 from flask import Flask, request, jsonify
 import numpy as np
 import pandas as pd
@@ -14,7 +8,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 app = Flask(__name__)
 
 # Load the dataset
-df = pd.read_csv("C:/Users/Taroo2/Music/Private/King_Of_Hell/Route_Ai/Works/Model/data.csv")
+df = pd.read_csv("E:/data.csv")
 
 # Preprocess the data
 selected_features = ['title', 'authors', 'categories', 'published_year']
@@ -60,10 +54,3 @@ def recommend_books():
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
-
-
-# In[ ]:
-
-
-
-
