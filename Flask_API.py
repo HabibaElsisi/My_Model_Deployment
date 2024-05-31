@@ -8,7 +8,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 app = Flask(__name__)
 
 # Load the dataset
-df = pd.read_csv("E:/data.csv")
+df = pd.read_csv("data.csv")
 
 # Preprocess the data
 selected_features = ['title', 'authors', 'categories', 'published_year']
