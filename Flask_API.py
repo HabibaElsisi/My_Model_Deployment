@@ -11,6 +11,7 @@ app = Flask(__name__)
 df = pd.read_csv("data.csv")
 
 
+
 # Preprocess the data
 selected_features = ['title', 'authors', 'categories', 'published_year']
 for feature in selected_features:
