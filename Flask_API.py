@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify
-import os
 import numpy as np
 import pandas as pd
 import difflib
@@ -8,17 +7,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 app = Flask(__name__)
 
-# Get the directory of the current script
-current_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Define the directory where the CSV file is located
-csv_directory = current_dir
-
-# Path to the CSV file
-csv_filename = "data.csv"
-csv_path = os.path.join(csv_directory, csv_filename)
-
 # Load the dataset
+csv_path = "data.csv"
 df = pd.read_csv(csv_path)
 
 # Preprocess the data
