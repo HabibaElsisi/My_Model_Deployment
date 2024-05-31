@@ -8,14 +8,13 @@ from sklearn.metrics.pairwise import cosine_similarity
 app = Flask(__name__)
 
 # Load the dataset
-csv_path = "data.csv"
-df = pd.read_csv(csv_path)
+df = pd.read_csv("/data.csv")
 
 # Preprocess the data
 selected_features = ['title', 'authors', 'categories', 'published_year']
 for feature in selected_features:
     df[feature] = df[feature].fillna('')
-combined_features = df['title'] + ' ' + df['categories'] + ' ' + df['authors'] + ' ' + df['published_year'].astype(str)
+combined_features = df['title'] + ' ' + df['categories'] + ' ' + df['authors'] + ' ' + f"{df['published_year']}"
 vectorizer = TfidfVectorizer()
 feature_vectors = vectorizer.fit_transform(combined_features)
 similarity = cosine_similarity(feature_vectors, feature_vectors)
@@ -50,6 +49,8 @@ def recommend_books():
         recommended_books.append({'title': title_from_index})
     
     return jsonify({'recommended_books': recommended_books}), 200
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
